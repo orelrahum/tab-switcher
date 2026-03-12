@@ -149,9 +149,18 @@ async function restoreNames() {
   }
 }
 
-chrome.runtime.onStartup.addListener(restoreNames);
-chrome.runtime.onInstalled.addListener(restoreNames);
-restoreNames();
+// Restore names with retry — tabs may not have URLs yet on startup
+async function restoreNamesWithRetry() {
+  // Try immediately, then retry after delays for tabs still loading
+  for (const delay of [0, 1000, 3000, 6000]) {
+    if (delay > 0) await new Promise(r => setTimeout(r, delay));
+    await restoreNames();
+  }
+}
+
+chrome.runtime.onStartup.addListener(restoreNamesWithRetry);
+chrome.runtime.onInstalled.addListener(restoreNamesWithRetry);
+restoreNamesWithRetry();
 
 /* ── Tab Cleanup ── */
 
