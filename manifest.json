@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Switcher",
+  "description": "Alt+Tab style tab switcher with group filtering and custom tab renaming",
+  "version": "1.0.0",
+  "minimum_chrome_version": "110",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Tab Switcher"
+  },
+  "commands": {
+    "switch-next": {
+      "suggested_key": { "default": "Alt+E", "mac": "Alt+E" },
+      "description": "Open switcher / next tab"
+    },
+    "switch-prev": {
+      "suggested_key": { "default": "Alt+Shift+E", "mac": "Alt+Shift+E" },
+      "description": "Previous tab in switcher"
+    },
+    "rename-tab": {
+      "suggested_key": { "default": "Alt+R", "mac": "Alt+R" },
+      "description": "Rename current tab"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
