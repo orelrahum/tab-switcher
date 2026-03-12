@@ -1,6 +1,6 @@
-# Tab Switcher — Microsoft Edge Extension
+# Tab Switcher — Chrome & Edge Extension
 
-An Alt+Tab style tab switcher for Microsoft Edge with tab group filtering, MRU ordering, and custom tab renaming.
+An Alt+Tab style tab switcher for Google Chrome and Microsoft Edge with tab group filtering, MRU ordering, and custom tab renaming.
 
 ## Features
 
@@ -12,11 +12,11 @@ An Alt+Tab style tab switcher for Microsoft Edge with tab group filtering, MRU o
 
 ## Keyboard Shortcuts
 
-| Action | Default Shortcut |
-|---|---|
-| Open switcher / next tab | `Alt+E` |
-| Previous tab (while open) | `Shift` (hold Alt) |
-| Rename current tab | `Alt+R` |
+| Action | Mac | Windows / Linux |
+|---|---|---|
+| Open switcher / next tab | `⌥ E` | `Alt+E` |
+| Previous tab (while open) | `⇧` (hold `⌥`) | `Shift` (hold `Alt`) |
+| Rename current tab | `⌥ R` | `Alt+R` |
 
 While the overlay is open:
 
@@ -26,16 +26,16 @@ While the overlay is open:
 | `←` / `→` | Switch between groups |
 | `Enter` | Switch to selected tab |
 | `Escape` | Close without switching |
-| Release `Alt` / `Cmd` | Switch to selected tab |
+| Release `⌥` / `Alt` | Switch to selected tab |
 
-> **Tip:** You can override shortcuts to `Cmd+E` / `Cmd+R` (or any combo) at `edge://extensions/shortcuts`.
+> **Tip:** You can override shortcuts at `edge://extensions/shortcuts` or `chrome://extensions/shortcuts`.
 
 ## Installation
 
-1. Open `edge://extensions/` in Microsoft Edge
-2. Enable **Developer mode** (toggle in the bottom-left)
+1. Open `edge://extensions/` or `chrome://extensions/` in your browser
+2. Enable **Developer mode** (toggle in the bottom-left or top-right)
 3. Click **Load unpacked** and select this folder
-4. (Optional) Go to `edge://extensions/shortcuts` to customize keyboard shortcuts
+4. (Optional) Customize keyboard shortcuts at `edge://extensions/shortcuts` or `chrome://extensions/shortcuts`
 
 ## How It Works
 
