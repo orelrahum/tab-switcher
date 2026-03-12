@@ -15,6 +15,10 @@
   "action": {
     "default_title": "Tab Switcher"
   },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
   "commands": {
     "switch-next": {
       "suggested_key": { "default": "Alt+E", "mac": "Alt+E" },

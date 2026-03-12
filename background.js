@@ -176,8 +176,11 @@ chrome.tabs.onRemoved.addListener(async (tabId) => {
 /* ── Build Tab Data ── */
 
 async function buildTabData() {
+  const settings = await chrome.storage.local.get({ sortOrder: "recent" });
   const allTabs = await chrome.tabs.query({ currentWindow: true });
-  const sorted = sortByMRU(allTabs);
+  const sorted = settings.sortOrder === "tab-bar"
+    ? [...allTabs].sort((a, b) => a.index - b.index)
+    : sortByMRU(allTabs);
   const groupMap = new Map();
   for (const tab of sorted) {
     if (tab.groupId !== -1 && tab.groupId !== undefined && !groupMap.has(tab.groupId)) {
