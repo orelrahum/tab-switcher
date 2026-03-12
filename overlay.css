@@ -7,6 +7,7 @@
   backdrop-filter:blur(10px)!important;
   animation:tsIn .12s ease-out!important;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif!important;
+  direction:ltr!important;text-align:left!important;
 }
 @keyframes tsIn{from{opacity:0}to{opacity:1}}
 #ts-box {
