@@ -24,7 +24,6 @@ A Chrome/Edge extension (Manifest V3) that provides an Alt+Tab style tab switche
 |---|---|---|
 | Open/next | ⌥E | Alt+E |
 | Previous (while open) | ⇧ (hold ⌥) | Shift (hold Alt) |
-| Close selected tab | ⌥W | Alt+W |
 | Rename tab | ⌥R | Alt+R |
 | Cycle groups | ←/→ | ←/→ |
 | Navigate tabs | ↑/↓ | ↑/↓ |
