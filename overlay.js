@@ -155,6 +155,19 @@
     try { chrome.runtime.sendMessage(data); } catch (_) { /* extension context invalidated */ }
   }
 
+  function closeSelectedTab() {
+    var tab = currentTabs[selectedIndex];
+    if (!tab) return;
+    sendMsg({ action: "close-tab", tabId: tab.id });
+    // Remove from local lists and re-render
+    var tabId = tab.id;
+    allTabs = allTabs.filter(function(t) { return t.id !== tabId; });
+    currentTabs = currentTabs.filter(function(t) { return t.id !== tabId; });
+    if (!currentTabs.length) { closeOverlay(); return; }
+    if (selectedIndex >= currentTabs.length) selectedIndex = currentTabs.length - 1;
+    render();
+  }
+
   function switchTo(idx) {
     var tab = currentTabs[idx];
     if (tab) sendMsg({ action: "switch-tab", tabId: tab.id });
@@ -194,6 +207,7 @@
     else if (e.key === "ArrowLeft")  { e.preventDefault(); e.stopPropagation(); cycleGroup(-1); }
     else if (e.key === "Escape")     { e.preventDefault(); e.stopPropagation(); closeOverlay(); }
     else if (e.key === "Enter")      { e.preventDefault(); e.stopPropagation(); confirmAndClose(); }
+    else if (e.key.toLowerCase() === "w" && (e.altKey || e.metaKey)) { e.preventDefault(); e.stopPropagation(); closeSelectedTab(); }
   }
 
   function onMouseDown(e) {

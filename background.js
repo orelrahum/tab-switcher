@@ -293,6 +293,13 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     overlayTabId = null;
   }
 
+  if (msg.action === "close-tab") {
+    const tabId = Number(msg.tabId);
+    if (!Number.isInteger(tabId) || tabId <= 0) return;
+    chrome.tabs.remove(tabId);
+    sendResponse({ ok: true });
+  }
+
   if (msg.action === "save-name") {
     const tabId = Number(msg.tabId);
     if (!Number.isInteger(tabId) || tabId <= 0) return;
