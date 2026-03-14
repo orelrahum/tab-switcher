@@ -224,8 +224,8 @@ async function injectOverlay(tabId, tabUrl, direction) {
       await chrome.tabs.sendMessage(tabId, { action: "ts-move", direction });
     } else {
       const data = await buildTabData();
-      await chrome.scripting.insertCSS({ target: { tabId }, files: ["overlay.css"] });
-      await chrome.scripting.executeScript({ target: { tabId }, files: ["overlay.js"] });
+      await chrome.scripting.insertCSS({ target: { tabId }, files: ["src/overlay.css"] });
+      await chrome.scripting.executeScript({ target: { tabId }, files: ["src/overlay.js"] });
       await new Promise(r => setTimeout(r, 100));
       await chrome.tabs.sendMessage(tabId, {
         action: "ts-open", tabs: data.tabs, groups: data.groups, direction
@@ -252,8 +252,8 @@ chrome.commands.onCommand.addListener(async (command) => {
   if (command === "rename-tab") {
     if (!activeTab.url || isRestrictedUrl(activeTab.url)) return;
     try {
-      await chrome.scripting.insertCSS({ target: { tabId: activeTab.id }, files: ["overlay.css"] });
-      await chrome.scripting.executeScript({ target: { tabId: activeTab.id }, files: ["rename.js"] });
+      await chrome.scripting.insertCSS({ target: { tabId: activeTab.id }, files: ["src/overlay.css"] });
+      await chrome.scripting.executeScript({ target: { tabId: activeTab.id }, files: ["src/rename.js"] });
       await new Promise(r => setTimeout(r, 50));
       await chrome.tabs.sendMessage(activeTab.id, {
         action: "ts-rename",

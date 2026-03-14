@@ -49,10 +49,12 @@ While the overlay is open:
 | File | Purpose |
 |---|---|
 | `manifest.json` | Extension configuration (Manifest V3) |
-| `background.js` | Service worker: MRU tracking, screenshots, tab data, name persistence |
-| `overlay.js` | Tab switcher overlay (injected into pages) |
-| `overlay.css` | Overlay styling |
-| `rename.js` | Rename dialog (injected into pages) |
+| `src/background.js` | Service worker: MRU tracking, screenshots, tab data, name persistence |
+| `src/overlay.js` | Tab switcher overlay (injected into pages) |
+| `src/overlay.css` | Overlay styling |
+| `src/rename.js` | Rename dialog (injected into pages) |
+| `src/options.html` | Settings page |
+| `src/options.js` | Settings logic |
 | `icons/` | Extension icons (16, 48, 128px) |
 
 ## Permissions
