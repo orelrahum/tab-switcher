@@ -4,11 +4,11 @@
 A Chrome/Edge extension (Manifest V3) that provides an Alt+Tab style tab switcher overlay with tab group support and custom tab renaming.
 
 ## Architecture
-- **background.js** — Service worker: MRU tracking, screenshot capture, tab data builder, custom name persistence (serialized writes to chrome.storage.local), overlay/rename injection, message handler.
-- **overlay.js** — IIFE injected into pages via `chrome.scripting.executeScript`. Renders full-screen dark overlay with group chips + tab list. Keyboard driven (arrows, Shift for back, Alt/Meta release to confirm). Zoom-compensated (`box.style.zoom = 1.1 / pageZoom`). Uses `sendMsg()` wrapper for all `chrome.runtime.sendMessage` calls to handle context invalidation.
-- **overlay.css** — Overlay styling. Forces `direction:ltr` for RTL page compatibility.
-- **rename.js** — IIFE injected for rename dialog. Zoom-compensated. Sends `save-name` message with tabId.
-- **options.html / options.js** — Settings popup (right-click icon → Options). Sort order: "recently focused" (MRU) or "tab bar order" (tab index).
+- **src/background.js** — Service worker: MRU tracking, screenshot capture, tab data builder, custom name persistence (serialized writes to chrome.storage.local), overlay/rename injection, message handler.
+- **src/overlay.js** — IIFE injected into pages via `chrome.scripting.executeScript`. Renders full-screen dark overlay with group chips + tab list. Keyboard driven (arrows, Shift for back, Alt/Meta release to confirm). Zoom-compensated (`box.style.zoom = 1.1 / pageZoom`). Uses `sendMsg()` wrapper for all `chrome.runtime.sendMessage` calls to handle context invalidation.
+- **src/overlay.css** — Overlay styling. Forces `direction:ltr` for RTL page compatibility.
+- **src/rename.js** — IIFE injected for rename dialog. Zoom-compensated. Sends `save-name` message with tabId.
+- **src/options.html / src/options.js** — Settings popup (right-click icon → Options). Sort order: "recently focused" (MRU) or "tab bar order" (tab index).
 - **manifest.json** — v1.0.0. Permissions: tabs, tabGroups, activeTab, scripting, storage. Commands: Alt+E (switch), Alt+Shift+E (prev), Alt+R (rename).
 
 ## Key Design Decisions
